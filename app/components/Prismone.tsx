@@ -1,11 +1,31 @@
-import { useEffect, useRef } from "react";
+"use client";
+import React, { useEffect, useRef } from "react";
 import { Renderer, Triangle, Program, Mesh } from "ogl";
 
-const Prism = ({
+type PrismProps = {
+	height?: number;
+	baseWidth?: number;
+	animationType?: "rotate" | "hover" | "3drotate";
+	glow?: number;
+	offset?: { x?: number; y?: number };
+	noise?: number;
+	transparent?: boolean;
+	scale?: number;
+	hueShift?: number;
+	colorFrequency?: number;
+	hoverStrength?: number;
+	inertia?: number;
+	bloom?: number;
+	suspendWhenOffscreen?: boolean;
+	timeScale?: number;
+    className?: string;
+};
+
+const Prism: React.FC<PrismProps> = ({
 	height = 3.5,
 	baseWidth = 5.5,
 	animationType = "rotate",
-	glow = 1,
+	glow = 2,
 	offset = { x: 0, y: 0 },
 	noise = 0.5,
 	transparent = true,
@@ -18,7 +38,7 @@ const Prism = ({
 	suspendWhenOffscreen = false,
 	timeScale = 0.5,
 }) => {
-	const containerRef = useRef(null);
+	const containerRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
 		const container = containerRef.current;
@@ -60,7 +80,7 @@ const Prism = ({
 			width: "100%",
 			height: "100%",
 			display: "block",
-		});
+		} as Partial<CSSStyleDeclaration>);
 		container.appendChild(gl.canvas);
 
 		const vertex = /* glsl */ `
@@ -237,7 +257,12 @@ const Prism = ({
 		resize();
 
 		const rotBuf = new Float32Array(9);
-		const setMat3FromEuler = (yawY, pitchX, rollZ, out) => {
+		const setMat3FromEuler = (
+			yawY: number,
+			pitchX: number,
+			rollZ: number,
+			out: Float32Array,
+		) => {
 			const cy = Math.cos(yawY),
 				sy = Math.sin(yawY);
 			const cx = Math.cos(pitchX),
@@ -293,10 +318,10 @@ const Prism = ({
 			roll = 0;
 		let targetYaw = 0,
 			targetPitch = 0;
-		const lerp = (a, b, t) => a + (b - a) * t;
+		const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 		const pointer = { x: 0, y: 0, inside: true };
-		const onMove = (e) => {
+		const onMove = (e: PointerEvent) => {
 			const ww = Math.max(1, window.innerWidth);
 			const wh = Math.max(1, window.innerHeight);
 			const cx = ww * 0.5;
@@ -314,9 +339,9 @@ const Prism = ({
 			pointer.inside = false;
 		};
 
-		let onPointerMove = null;
+		let onPointerMove: ((e: PointerEvent) => void) | null = null;
 		if (animationType === "hover") {
-			onPointerMove = (e) => {
+			onPointerMove = (e: PointerEvent) => {
 				onMove(e);
 				startRAF();
 			};
@@ -330,7 +355,7 @@ const Prism = ({
 			program.uniforms.uUseBaseWobble.value = 1;
 		}
 
-		const render = (t) => {
+		const render = (t: number) => {
 			const time = (t - t0) * 0.001;
 			program.uniforms.iTime.value = time;
 
@@ -403,7 +428,7 @@ const Prism = ({
 			});
 			io.observe(container);
 			startRAF();
-			container.__prismIO = io;
+			(container as any).__prismIO = io;
 		} else {
 			startRAF();
 		}
@@ -413,14 +438,19 @@ const Prism = ({
 			ro.disconnect();
 			if (animationType === "hover") {
 				if (onPointerMove)
-					window.removeEventListener("pointermove", onPointerMove);
+					window.removeEventListener(
+						"pointermove",
+						onPointerMove as EventListener,
+					);
 				window.removeEventListener("mouseleave", onLeave);
 				window.removeEventListener("blur", onBlur);
 			}
 			if (suspendWhenOffscreen) {
-				const io = container.__prismIO;
+				const io = (container as any).__prismIO as
+					| IntersectionObserver
+					| undefined;
 				if (io) io.disconnect();
-				delete container.__prismIO;
+				delete (container as any).__prismIO;
 			}
 			if (gl.canvas.parentElement === container)
 				container.removeChild(gl.canvas);
@@ -442,6 +472,7 @@ const Prism = ({
 		inertia,
 		bloom,
 		suspendWhenOffscreen,
+    
 	]);
 
 	return <div className="w-full h-full relative" ref={containerRef} />;
