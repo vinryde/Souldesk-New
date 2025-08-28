@@ -1,14 +1,11 @@
-import Hero from "./components/hero";
 import { AuroraHero } from "./components/futurastic-hero-section";
 import Navbar from "./components/navbar";
-import Quote from "./components/sectionintro";
 import SectionHeader from "./components/sectionheader";
 import ProblemDashboard from "./components/problembar";
 import ProblemTwo from "./components/problemtwo";
 import AttritionDriversPie from "./components/pieproblem";
 import WorkModelBubbleChart from "./components/bubbleproblem";
 import ProblemDough from "./components/problemdough";
-import HRTechAdoption from "./components/radarnew";
 import HRTechLineChart from "./components/hrline";
 import BarriersChart from "./components/polarbarriers";
 
