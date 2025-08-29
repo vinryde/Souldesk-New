@@ -5,35 +5,35 @@ import BubbleMenu from "./BubbleMenu";
 const Navbar = () => {
   const items = [
     {
-      label: "home",
+      label: "Home",
       href: "#",
       ariaLabel: "Home",
       rotation: -8,
       hoverStyles: { bgColor: "#3b82f6", textColor: "#ffffff" },
     },
     {
-      label: "about",
+      label: "Problem",
       href: "#",
-      ariaLabel: "About",
+      ariaLabel: "Problem",
       rotation: 8,
       hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
     },
     {
-      label: "projects",
+      label: "Solution",
       href: "#",
-      ariaLabel: "Projects",
+      ariaLabel: "Solution",
       rotation: 8,
       hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
     },
     {
-      label: "blog",
+      label: "About",
       href: "#",
-      ariaLabel: "Blog",
+      ariaLabel: "About",
       rotation: 8,
       hoverStyles: { bgColor: "#ef4444", textColor: "#ffffff" },
     },
     {
-      label: "contact",
+      label: "Contact",
       href: "#",
       ariaLabel: "Contact",
       rotation: -8,

@@ -7,7 +7,7 @@ import AttritionDriversPie from "./components/pieproblem";
 import WorkModelBubbleChart from "./components/bubbleproblem";
 import ProblemDough from "./components/problemdough";
 import HRTechLineChart from "./components/hrline";
-import BarriersChart from "./components/polarbarriers";
+import TechBarriersChart from "./components/horiproblem";
 
 
 export default function Home() {
@@ -17,6 +17,7 @@ export default function Home() {
      <div className="h-[200vh]">
       <Navbar/>
      <AuroraHero/>
+     
      <SectionHeader
         title="The High Cost of a Revolving Door"
         subtitle=" Employee attrition in India isn't just a statistic; it's a significant financial drain impacting profitability and operational stability. The charts below visualize the scale of this problem across industries and the direct costs associated with replacing talent."
@@ -51,8 +52,17 @@ export default function Home() {
         subtitleClassName="max-w-2xl text-center mx-auto"
       />
       <ProblemDough/>
-      <HRTechLineChart/>
-      <BarriersChart/>
+      <SectionHeader
+        title="Key Barriers to Effective Use of Technology"
+        subtitle="Organizations face challenges such as skills gaps, poor data quality, limited data interpretation, resistance to adoption, and lack of adequate tools, all of which limit the full impact of technology."
+        align="center"
+        className="mt-10 p-5"
+        titleClassName="max-w-4xl text-center mx-auto"
+        subtitleClassName="max-w-2xl text-center mx-auto"
+        />
+       <TechBarriersChart/>
+       <HRTechLineChart/>
+     
      
       
 
