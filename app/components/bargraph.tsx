@@ -101,7 +101,8 @@ const Graph: React.FC<GraphProps> = ({ title, subtitle, labels, values, unit }) 
   return (
     <div
       ref={chartRef}
-      className="w-full rounded-2xl bg-[#fceef5]/40 backdrop-blur-3xl shadow-md p-6 hover:bg-linear-to-r hover:from-blue-500/5 hover:to-purple-500/5 transition-all duration-200"
+      className="w-full rounded-2xl bg-[#fceef5]/40 backdrop-blur-3xl shadow-md p-6 hover:bg-linear-to-r hover:from-blue-500/5 hover:to-purple-500/5 transition-all duration-200 focus:bg-linear-to-r focus:from-blue-500/5 focus:to-purple-500/5 
+           active:bg-linear-to-r active:from-blue-500/5 active:to-purple-500/5"
     >
       <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
       {subtitle && <p className="text-sm text-gray-500 mb-4">{subtitle}</p>}
