@@ -21,7 +21,7 @@ interface DoughnutChartProps {
   unit?: string; // optional (%, ₹, $, etc.)
 }
 
-const COLORS = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C", "#F59E0B", "#10B981"];
+const COLORS = ["#BDE0FE", "#B5EAD7", "#90E0EF", "#48CAE4"];
 
 const DoughnutChart: React.FC<DoughnutChartProps> = ({ 
   title, 
@@ -92,7 +92,7 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({
   };
 
   return (
-    <div ref={chartRef} className="w-full rounded-2xl bg-white shadow-md p-6">
+    <div ref={chartRef} className="w-full rounded-2xl bg-[#fceef5]/40 backdrop-blur-3xl shadow-lg p-6 hover:bg-linear-to-r hover:from-blue-500/5 hover:to-purple-500/5 transition-all duration-200">
       <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
       {subtitle && <p className="text-sm text-gray-500 mb-4">{subtitle}</p>}
       <div className="h-[350px]">

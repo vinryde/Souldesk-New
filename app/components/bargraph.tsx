@@ -24,7 +24,7 @@ interface GraphProps {
   unit?: string; // optional (%, ₹, $, etc.)
 }
 
-const COLORS = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C"];
+const COLORS = ["#BDE0FE", "#A2D2FF", "#90E0EF", "#48CAE4"];
 
 const Graph: React.FC<GraphProps> = ({ title, subtitle, labels, values, unit }) => {
   const chartRef = useRef<any>(null);
@@ -73,7 +73,7 @@ const Graph: React.FC<GraphProps> = ({ title, subtitle, labels, values, unit }) 
         callbacks: {
           label: (context) => {
             const value = context.raw;
-            return unit ? `${unit}${value}` : String(value);
+            return unit ? `${value}${unit}` : String(value);
           },
         },
       },
@@ -91,7 +91,7 @@ const Graph: React.FC<GraphProps> = ({ title, subtitle, labels, values, unit }) 
         ticks: {
           color: "#6b7280",
           callback: function (tickValue) {
-            return unit ? `${unit}${tickValue}` : String(tickValue);
+            return unit ? `${tickValue}${unit}` : String(tickValue);
           },
         },
       },
@@ -101,7 +101,7 @@ const Graph: React.FC<GraphProps> = ({ title, subtitle, labels, values, unit }) 
   return (
     <div
       ref={chartRef}
-      className="w-full rounded-2xl bg-white shadow-md p-6"
+      className="w-full rounded-2xl bg-[#fceef5]/40 backdrop-blur-3xl shadow-md p-6 hover:bg-linear-to-r hover:from-blue-500/5 hover:to-purple-500/5 transition-all duration-200"
     >
       <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
       {subtitle && <p className="text-sm text-gray-500 mb-4">{subtitle}</p>}

@@ -96,7 +96,7 @@ const BubbleGraph: React.FC<BubbleGraphProps> = ({
   };
 
   return (
-    <div ref={chartRef} className="w-full rounded-2xl bg-white shadow-md p-6">
+    <div ref={chartRef} className="w-full rounded-2xl bg-[#fceef5]/40 backdrop-blur-3xl shadow-lg p-6 hover:bg-linear-to-r hover:from-blue-500/5 hover:to-purple-500/5 transition-all duration-200">
       <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
       {subtitle && <p className="text-sm text-gray-500 mb-4">{subtitle}</p>}
       <div className="h-[400px]">

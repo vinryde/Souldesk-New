@@ -3,7 +3,7 @@
 import React from "react";
 import BubbleGraph from "./bubblechart";
 
-const COLORS = ["#13FFAA", "#1E67C6", "#CE84CF", "#DD335C", "#F59E0B"];
+const COLORS = ["#BDE0FE", "#B5EAD7", "#90E0EF", "#48CAE4"];
 
 const WorkModelBubbleChart = () => {
   // Survey data

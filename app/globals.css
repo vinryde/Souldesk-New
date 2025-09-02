@@ -49,6 +49,9 @@ h1, h2, h3, h4, h5, h6 {
 p {
   font-family: var(--font-lora), serif;
 }
+.font-serif {
+  font-family: var(--font-lora), serif;
+}
 
 :root {
   --radius: 0.625rem;

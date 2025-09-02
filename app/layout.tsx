@@ -24,7 +24,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${lora.variable} antialiased`}>
+      <body className={`${dmSans.variable} ${lora.variable} antialiased relative bg-[#f5f5dc]` } style={{
+      backgroundImage: `
+        radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.5) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120,119,198,0.1) 0%, transparent 50%)`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+    }}>
+  
         {children}
       </body>
     </html>
