@@ -9,7 +9,6 @@ import ProblemDough from "./components/problemdough";
 import HRTechLineChart from "./components/hrline";
 import TechBarriersChart from "./components/horiproblem";
 import DotGrid from "./components/DotGrid";
-import Ballpit from "./components/Ballpit";
 import { BentoDemoOne } from "./components/newfeaturesbento";
 import BasicAccordion from "./components/accordion-1";
 import { ContactForm } from "./components/contact";
